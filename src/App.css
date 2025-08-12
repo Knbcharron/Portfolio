@@ -1,38 +1,126 @@
-.App {
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base styles */
+.app {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Fixed header */
+.header {
+  position: fixed; /* Stays at top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensures header is above sections */
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #007bff; /* Blue hover effect */
+}
+
+/* Full-screen sections */
+.section {
+  min-height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px 20px; /* Extra top padding to avoid header overlap */
+  box-sizing: border-box;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Section-specific backgrounds (optional, for visual distinction) */
+.home { background-color: #f0f0f0; }
+.about { background-color: #e0e0e0; }
+.skills { background-color: #d0d0d0; }
+.projects { background-color: #c0c0c0; }
+.contact { background-color: #b0b0b0; }
+
+/* Projects grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.project-card {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack name and nav vertically */
+    padding: 10px;
+  }
+
+  .name {
+    font-size: 1.4rem;
+  }
+
+  .nav {
+    margin-top: 10px;
+  }
+
+  .nav a {
+    margin: 0 10px;
+    font-size: 0.9rem;
+  }
+
+  .section {
+    padding: 70px 10px 10px; /* Adjust padding for smaller screens */
+    font-size: 0.9rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 480px) {
+  .name {
+    font-size: 1.2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav a {
+    font-size: 0.8rem;
+    margin: 0 5px;
+  }
+
+  .section h1, .section h2 {
+    font-size: 1.5rem; /* Smaller headings on mobile */
   }
 }

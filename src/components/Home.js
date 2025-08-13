@@ -25,20 +25,20 @@ function Home() {
     justifyContent: isMobile ? "center" : "flex-start",
   };
 
-  const textStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    fontSize: isMobile ? 20 : 30,
-    fontWeight: "bold",
-    color: "white",
-    opacity: 0,
-    animation: "fadeIn 2s forwards, rotate 5s linear infinite",
-    animationDelay: "1s, 3s",
-    whiteSpace: "nowrap",
-    zIndex: 1,
-  };
+const textStyle = {
+  position: "absolute",
+  top: isMobile ? "15%" : "50%", 
+  left: "50%",
+  transform: isMobile ? "translate(-50%, 0)" : "translate(-50%, -50%)",
+  fontSize: isMobile ? 14 : 30,
+  fontWeight: "bold",
+  color: "white",
+  opacity: 0,
+  animation: "fadeIn 2s forwards, rotate 5s linear infinite",
+  animationDelay: "1s, 3s",
+  whiteSpace: "nowrap",
+  zIndex: 1,
+};
 
   const wrapper = {
     display: "flex",

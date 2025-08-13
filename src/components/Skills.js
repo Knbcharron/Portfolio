@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function Projects() {
+export default function Skills() {
   const sliderRef = useRef(null);
   const [activeTab, setActiveTab] = useState("skills");
 
@@ -26,24 +26,28 @@ export default function Projects() {
   };
 
   const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1, // default mobile
-    slidesToScroll: 1,
-    arrows: true,
-    swipe: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 1 }
-      },
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 }
-      }
-    ],
-  };
+  dots: true,
+  infinite: true,         
+  speed: 500,
+  slidesToShow: 1,        
+  slidesToScroll: 1,
+  arrows: true,
+  swipe: true,
+  autoplay: true,         
+  autoplaySpeed: 3000,    
+  pauseOnHover: true,     
+  pauseOnDotsHover: true, 
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: { slidesToShow: 1 }
+    },
+    {
+      breakpoint: 1024,
+      settings: { slidesToShow: 2 }
+    }
+  ],
+};
 
   useEffect(() => {
     if (sliderRef.current) {
@@ -52,14 +56,15 @@ export default function Projects() {
   }, [activeTab]);
 
   const styles = {
-    section: {
-      backgroundColor: "#123642",
-      minHeight: "100vh",
-      padding: "40px 0",
-      width: "100%",
-      color: "white",
-      fontFamily: "Arial, sans-serif",
-    },
+   section: {
+  backgroundColor: "#123642",
+  minHeight: "100vh",
+  paddingTop: "0", 
+  paddingBottom: "40px", 
+  width: "100%",
+  color: "white",
+  fontFamily: "Arial, sans-serif",
+},
     container: {
       maxWidth: "900px",
       margin: "0 auto",

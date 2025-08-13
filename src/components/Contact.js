@@ -13,9 +13,9 @@ function Contact() {
   // Responsive container changes flexDirection and padding
   const container = {
     textAlign: "center",
-    padding: isMobile ? "20px" : "40px",
+    padding: isMobile ? "20px" : "100px",
     minHeight: "100vh",
-    backgroundColor: "#0d2a36",
+    backgroundColor: "#123642",
     width: "100%",
   };
 

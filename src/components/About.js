@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 function About() {
@@ -12,18 +11,40 @@ function About() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const containerStyle = {
+const containerStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  width: "100vw",
+  minHeight: "100vh",
+  padding: isMobile ? "1rem" : "2rem",
+  paddingTop: isMobile ? "6rem" : "8rem", // ✅ push content below header
+  boxSizing: "border-box",
+  backgroundColor: "#0d2a36",
+  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+  color: "white",
+};
+
+  const topHeadingStyle = {
+    textAlign: "center",
+    marginBottom: "1rem",
+  };
+
+  const headingStyle = {
+    fontSize: isMobile ? "2rem" : "2.5rem",
+    fontWeight: "bold",
+    margin: 0,
+  };
+
+
+  const contentWrapperStyle = {
     display: "flex",
     flexDirection: isMobile ? "column" : "row",
     alignItems: "center",
     justifyContent: "center",
-    width: "100vw",
-    minHeight: "100vh",
-    padding: isMobile ? "1rem" : "2rem",
-    boxSizing: "border-box",
-    backgroundColor: "#0d2a36",
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    color: "white",
+    maxWidth: "1000px",
+    width: "100%",
   };
 
   const imageWrapperStyle = {
@@ -43,18 +64,12 @@ function About() {
     boxShadow: "0 0 15px rgba(0,0,0,0.3)",
   };
 
-  const contentStyle = {
+  const textContentStyle = {
     flex: "1 1 auto",
     maxWidth: "700px",
   };
 
-  const headingStyle = {
-    fontSize: isMobile ? "2rem" : "2.5rem",
-    fontWeight: "bold",
-    marginBottom: "0.5rem",
-  };
-
-  const subheadingStyle = {
+  const sectionHeadingStyle = {
     fontSize: isMobile ? "1.25rem" : "1.5rem",
     fontWeight: "600",
     marginBottom: "1rem",
@@ -94,43 +109,56 @@ function About() {
 
   return (
     <div style={containerStyle}>
-      <div style={imageWrapperStyle}>
-        <img src={`${process.env.PUBLIC_URL}/p.jpg`} alt="Profile" style={imageStyle} />
+      {/* Title at top */}
+      <div style={topHeadingStyle}>
+        <h1 style={headingStyle}>My Profile</h1>
+        <h4>---What I'm?---</h4>
       </div>
 
-      <div style={contentStyle}>
-        <h1 style={{...headingStyle,textAlign:"center"}}>My Profile </h1>
-         <h4 style={{textAlign:"center"}}>---What I'm?--- </h4>
+      {/* Content */}
+      <div style={contentWrapperStyle}>
+        <div style={imageWrapperStyle}>
+          <img
+            src={`${process.env.PUBLIC_URL}/p.jpg`}
+            alt="Profile"
+            style={imageStyle}
+          />
+        </div>
 
-        <h2 style={subheadingStyle}>Professional Profile</h2>
-        <p style={paragraphStyle}>
-          Aspiring IT professional with a strong foundation in Computer Science,
-          I want to build my career with a well-known organization where I can
-          apply my knowledge, skills and gain hands-on experience. Eager to
-          contribute innovative solutions and grow in a dynamic tech environment.
-        </p>
+        <div style={textContentStyle}>
+          <h2 style={sectionHeadingStyle}>Professional Profile</h2>
+          <p style={paragraphStyle}>
+            Aspiring IT professional with a strong foundation in Computer
+            Science, I want to build my career with a well-known organization
+            where I can apply my knowledge, skills and gain hands-on
+            experience. Eager to contribute innovative solutions and grow in a
+            dynamic tech environment.
+          </p>
 
-        <h2 style={subheadingStyle}>Education</h2>
-        <ul style={educationListStyle}>
-          <li style={educationItemStyle}>
-            • Bachelor of Technology in Computer Science | 2022–2025 | 81.8% | Vemu Institute of Technology, Chittoor
-          </li>
-          <li style={educationItemStyle}>
-            • Diploma in ECE | 2019–2022 | 87% | Vemu Institute Of Technology, Chittoor
-          </li>
-          <li style={educationItemStyle}>
-            • SSC | 2018–2019 | 100% | Z P High School, Gundla Kattamanchi
-          </li>
-        </ul>
+          <h2 style={sectionHeadingStyle}>Education</h2>
+          <ul style={educationListStyle}>
+            <li style={educationItemStyle}>
+              • Bachelor of Technology in Computer Science | 2022–2025 | 81.8% |
+              Vemu Institute of Technology, Chittoor
+            </li>
+            <li style={educationItemStyle}>
+              • Diploma in ECE | 2019–2022 | 87% | Vemu Institute Of Technology,
+              Chittoor
+            </li>
+            <li style={educationItemStyle}>
+              • SSC | 2018–2019 | 100% | Z P High School, Gundla Kattamanchi
+            </li>
+          </ul>
 
-        <a
-          href={`${process.env.PUBLIC_URL}/charron resume.pdf`}
-          style={buttonStyle}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Download CV
-        </a>
+          <a
+            href={`${process.env.PUBLIC_URL}/charron resume.pdf`}
+            style={buttonStyle}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download CV
+          </a>
+        </div>
       </div>
     </div>
   );

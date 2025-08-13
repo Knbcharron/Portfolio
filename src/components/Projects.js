@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Projects() {
+  const [slidesToShow, setSlidesToShow] = useState(2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setSlidesToShow(1);
+      } else {
+        setSlidesToShow(2);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const projects = [
     { id: 1, title: "Medicine Recommendation System", image: "medicine.jpg" },
     { id: 2, title: "Mental Health Chat Bot", image: "chatbot.jpg" },
@@ -11,46 +27,49 @@ export default function Projects() {
     { id: 4, title: "TODO LIST", image: "todo.jpg" },
   ];
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    centerMode: false,
-    responsive: [
-      {
-        breakpoint: 768, // for tablets and below
-        settings: {
-          slidesToShow: 1,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 480, // for mobile phones
-        settings: {
-          slidesToShow: 1,
-          centerMode: false,
-        },
-      },
-    ],
-  };
+ const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow,
+  slidesToScroll: 1,
+  centerMode: slidesToShow === 1, 
+  centerPadding: "0px",
+  autoplay: true,         
+  autoplaySpeed: 3000,    
+  pauseOnHover: true,     
+  pauseOnDotsHover: true, 
+};
 
   const styles = {
     section: {
-      backgroundColor: "#123642",
+      backgroundColor: "#0d2a36",
       minHeight: "100vh",
-      padding: "40px 0",
+      paddingTop: "120px", 
+      paddingBottom: "40px",
       width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
     container: {
       maxWidth: "900px",
       margin: "0 auto",
       textAlign: "center",
       padding: "0 10px",
+      flex: 1,
     },
-    heading: { fontSize: "2.5rem", color: "white", marginBottom: "5px" },
-    subHeading: { fontSize: "1.2rem", color: "#ccc", marginBottom: "30px" },
+    heading: {
+      fontSize: "2.5rem",
+      color: "white",
+      marginBottom: "5px",
+      marginTop: "0px",
+    },
+    subHeading: {
+      fontSize: "1.2rem",
+      color: "#ccc",
+      marginBottom: "30px",
+    },
     card: {
       background: "white",
       borderRadius: "15px",
@@ -61,7 +80,9 @@ export default function Projects() {
       alignItems: "center",
       justifyContent: "center",
       boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-      margin: "0 10px",
+      margin: "0 auto", 
+      maxWidth: "90%",
+      marginTop: "40px",
     },
     image: {
       width: "120px",
@@ -71,7 +92,10 @@ export default function Projects() {
       border: "3px solid #ddd",
       marginBottom: "15px",
     },
-    title: { fontSize: "1.2rem", color: "#333" },
+    title: {
+      fontSize: "1.2rem",
+      color: "#333",
+    },
   };
 
   return (
@@ -85,9 +109,9 @@ export default function Projects() {
             <div key={p.id}>
               <div style={styles.card}>
                 <img
-                   src={`${process.env.PUBLIC_URL}/${p.image}`}
-                    alt={p.title}
-                   style={styles.image}
+                  src={`${process.env.PUBLIC_URL}/${p.image}`}
+                  alt={p.title}
+                  style={styles.image}
                 />
                 <h3 style={styles.title}>{p.title}</h3>
               </div>

@@ -21,6 +21,6 @@ section {
 /* Media query for mobile devices (≤ 768px) */
 @media (max-width: 768px) {
   section {
-    padding-top: 50px; 
+    padding-top: 5px; 
   }
 }

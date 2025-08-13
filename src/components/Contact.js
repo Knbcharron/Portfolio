@@ -15,28 +15,28 @@ function Contact() {
     textAlign: "center",
     padding: isMobile ? "20px" : "100px",
     minHeight: "100vh",
-    backgroundColor: "#123642",
+    backgroundColor: "#1A2A44",
     width: "100%",
-    maxWidth: "100vw", // Prevents extension beyond screen width
+    maxWidth: "100vw",
     boxSizing: "border-box",
-    paddingTop: isMobile ? "70px" : "120px", // Adjusted for header (50px mobile, 60px desktop) + padding
+    paddingTop: isMobile ? "20px" : "40px", // Reduced from 70px to 20px (mobile) and 120px to 40px (desktop)
     margin: "0",
-    overflowX: "hidden", // Prevents horizontal overflow
+    overflowX: "hidden",
   };
 
   // Main section with centered content and max width
-const mainSection = {
-  display: "flex",
-  justifyContent: "center", // ✅ Center items
-  flexWrap: "wrap",
-  textAlign: "left",
-  flexDirection: isMobile ? "column" : "row",
-  gap: "40px", // ✅ Space between left & right even on desktop
-  maxWidth: "1200px",
-  margin: "0 auto",
-  width: "100%",
-  boxSizing: "border-box",
-};
+  const mainSection = {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    textAlign: "left",
+    flexDirection: isMobile ? "column" : "row",
+    gap: "40px",
+    maxWidth: "1200px",
+    margin: "0 auto",
+    width: "100%",
+    boxSizing: "border-box",
+  };
 
   const leftSection = {
     flex: "1",
@@ -54,17 +54,21 @@ const mainSection = {
     padding: "20px",
     borderRadius: "8px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    backgroundColor: "#fff", // Consistent background for both mobile and desktop
-    color: "#000", // Consistent text color
+    backgroundColor: "#fff",
+    color: "#000",
     boxSizing: "border-box",
-    height:"400px",
+    height: "400px",
   };
 
   const title = {
     fontSize: "2rem",
     fontWeight: "bold",
-    color: "white",
+    background: "linear-gradient(to right, #2E4057, #4682B4)",
+    WebkitBackgroundClip: "text",
+    color: "transparent",
     marginBottom: "10px",
+    padding: "10px",
+    borderRadius: "5px",
   };
 
   const subTitle = {
@@ -77,6 +81,11 @@ const mainSection = {
     fontWeight: "bold",
     fontSize: isMobile ? "1.1rem" : "1.3rem",
     marginBottom: "10px",
+    background: "linear-gradient(to right, #2E4057, #4682B4)",
+    WebkitBackgroundClip: "text",
+    color: "transparent",
+    padding: "5px 10px",
+    borderRadius: "3px",
   };
 
   const para = {
@@ -95,7 +104,7 @@ const mainSection = {
 
   // Style for symbols to ensure white color
   const symbolStyle = {
-    color: "white", // Ensures symbols are white
+    color: "white",
   };
 
   const socialIcons = {
@@ -107,7 +116,7 @@ const mainSection = {
   };
 
   const iconStyle = {
-    color: "white", // Consistent white color for all icons
+    color: "white",
     textDecoration: "none",
     transition: "color 0.3s",
   };
@@ -149,7 +158,7 @@ const mainSection = {
   };
 
   const button = {
-    backgroundColor: "#0d2c54",
+    backgroundColor: "#A3BFFA",
     color: "#fff",
     padding: "10px 20px",
     border: "none",

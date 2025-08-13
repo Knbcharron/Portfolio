@@ -57,16 +57,16 @@ export default function Skills() {
 
   const styles = {
     section: {
-      backgroundColor: "#123642",
+      backgroundColor: "#1A2A44",
       minHeight: "100vh",
-      paddingTop: "120px", // Adjusted for 60px header + 60px padding on desktop
+      paddingTop: "60px", // Adjusted to 60px (matches assumed 60px desktop header)
       paddingBottom: "40px",
       width: "100%",
-      maxWidth: "100vw", // Prevents extension beyond screen width
+      maxWidth: "100vw",
       color: "white",
       fontFamily: "Arial, sans-serif",
       boxSizing: "border-box",
-      overflowX: "hidden", // Prevents horizontal overflow
+      overflowX: "hidden",
     },
     container: {
       maxWidth: "900px",
@@ -76,7 +76,14 @@ export default function Skills() {
       flex: 1,
       boxSizing: "border-box",
     },
-    heading: { fontSize: "2.5rem", marginBottom: "10px" },
+    heading: {
+      fontSize: "2.5rem",
+      marginBottom: "10px",
+      WebkitBackgroundClip: "text",
+      color: "white",
+      padding: "10px",
+      borderRadius: "5px",
+    },
     subHeading: { fontSize: "1.2rem", color: "#ccc", marginBottom: "30px" },
     tabs: {
       display: "flex",
@@ -88,8 +95,8 @@ export default function Skills() {
       cursor: "pointer",
       fontSize: "1.2rem",
       paddingBottom: "6px",
-      borderBottom: isActive ? "3px solid #00bcd4" : "3px solid transparent",
-      color: isActive ? "#00bcd4" : "#ccc",
+      borderBottom: isActive ? "3px solid #A3BFFA" : "3px solid transparent",
+      color: isActive ? "#A3BFFA" : "#ccc",
       fontWeight: isActive ? "bold" : "normal",
       background: "none",
       border: "none",
@@ -124,7 +131,7 @@ export default function Skills() {
 
   // Adjust paddingTop for mobile devices
   if (typeof window !== "undefined" && window.innerWidth <= 768) {
-    styles.section.paddingTop = "70px"; // Adjusted for 50px mobile header + 20px padding
+    styles.section.paddingTop = "50px"; // Adjusted to 50px (matches assumed 50px mobile header)
   }
 
   return (

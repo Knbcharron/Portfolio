@@ -20,7 +20,7 @@ function Home() {
     flexDirection: isMobile ? "column" : "row",
     justifyContent: isMobile ? "flex-start" : "flex-start",
     alignItems: isMobile ? "flex-start" : "center",
-    padding: isMobile ? "80px 20px 20px" : "0 10%",
+    padding: isMobile ? "20px 20px 20px" : "0 10%", // Reduced top padding on mobile
     color: "white",
     boxSizing: "border-box",
   };
@@ -32,6 +32,7 @@ function Home() {
     textAlign: isMobile ? "center" : "left",
     maxWidth: isMobile ? "100%" : "500px",
     zIndex: 2,
+    marginTop: isMobile ? "40px" : "0", // Added margin to push content down on mobile
   };
 
   const yellowText = {
@@ -61,10 +62,10 @@ function Home() {
 
   const textStyle = {
     position: "absolute",
-    top: isMobile ? "65%" : "50%",
+    top: isMobile ? "none" : "50%", // Hide on mobile by removing top positioning
     left: "50%",
     transform: "translate(-50%, -50%)",
-    fontSize: isMobile ? "14px" : "30px",
+    fontSize: isMobile ? "0" : "30px", // Hide text on mobile by setting font size to 0
     fontWeight: "bold",
     color: "white",
     opacity: 0,
@@ -72,6 +73,7 @@ function Home() {
     animationDelay: "1s, 3s",
     whiteSpace: "nowrap",
     zIndex: 1,
+    display: isMobile ? "none" : "block", // Explicitly hide on mobile
   };
 
   return (

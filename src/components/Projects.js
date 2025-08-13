@@ -43,17 +43,17 @@ export default function Projects() {
 
   const styles = {
     section: {
-      backgroundColor: "#0d2a36",
+      backgroundColor: "#1A2A44",
       minHeight: "100vh",
-      paddingTop: "120px", // Adjusted for 60px header + 60px padding on desktop
+      paddingTop: "90px", // Reduced from 120px to 40px (desktop)
       paddingBottom: "40px",
       width: "100%",
-      maxWidth: "100vw", // Prevents extension beyond screen width
+      maxWidth: "100vw",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       boxSizing: "border-box",
-      overflowX: "hidden", // Prevents horizontal overflow
+      overflowX: "hidden",
     },
     container: {
       maxWidth: "900px",
@@ -78,7 +78,6 @@ export default function Projects() {
       background: "white",
       borderRadius: "15px",
       padding: "20px",
-      minHeight: "250px",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -86,11 +85,12 @@ export default function Projects() {
       boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
       margin: "0 auto",
       maxWidth: "90%",
-      marginTop: "40px",
+      marginTop: "20px",
+      minHeight: window.innerWidth <= 768 ? "auto" : "250px",
     },
     image: {
-      width: "120px",
-      height: "120px",
+      width: window.innerWidth <= 768 ? "100px" : "120px",
+      height: window.innerWidth <= 768 ? "100px" : "120px",
       borderRadius: "50%",
       objectFit: "cover",
       border: "3px solid #ddd",
@@ -104,7 +104,7 @@ export default function Projects() {
 
   // Adjust paddingTop for mobile devices
   if (typeof window !== "undefined" && window.innerWidth <= 768) {
-    styles.section.paddingTop = "70px"; // Adjusted for 50px mobile header + 20px padding
+    styles.section.paddingTop = "20px"; // Reduced from 70px to 20px (mobile)
   }
 
   return (

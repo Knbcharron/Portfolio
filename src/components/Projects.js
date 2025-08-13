@@ -4,15 +4,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Projects() {
-  const [slidesToShow, setSlidesToShow] = useState(2);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setSlidesToShow(1);
-      } else {
-        setSlidesToShow(2);
-      }
+      setSlidesToShow(1); // Always 1 card
+      setWindowWidth(window.innerWidth); // Track width for responsive styles
     };
 
     handleResize();
@@ -33,7 +31,7 @@ export default function Projects() {
     speed: 500,
     slidesToShow,
     slidesToScroll: 1,
-    centerMode: slidesToShow === 1,
+    centerMode: true,
     centerPadding: "0px",
     autoplay: true,
     autoplaySpeed: 3000,
@@ -41,11 +39,13 @@ export default function Projects() {
     pauseOnDotsHover: true,
   };
 
+  // Responsive dynamic styles
+  const isMobile = windowWidth <= 768;
   const styles = {
     section: {
       backgroundColor: "#1A2A44",
       minHeight: "100vh",
-      paddingTop: "90px", // Reduced from 120px to 40px (desktop)
+      paddingTop: isMobile ? "20px" : "120px",
       paddingBottom: "40px",
       width: "100%",
       maxWidth: "100vw",
@@ -56,7 +56,7 @@ export default function Projects() {
       overflowX: "hidden",
     },
     container: {
-      maxWidth: "900px",
+      width: isMobile ? "95%" : "500px", // shrink for mobile
       margin: "0 auto",
       textAlign: "center",
       padding: "0 10px",
@@ -64,48 +64,46 @@ export default function Projects() {
       boxSizing: "border-box",
     },
     heading: {
-      fontSize: "2.5rem",
+      fontSize: isMobile ? "1.8rem" : "2.5rem",
       color: "white",
       marginBottom: "5px",
       marginTop: "0px",
     },
     subHeading: {
-      fontSize: "1.2rem",
+      fontSize: isMobile ? "1rem" : "1.2rem",
       color: "#ccc",
       marginBottom: "30px",
     },
     card: {
       background: "white",
       borderRadius: "15px",
-      padding: "20px",
+      padding: isMobile ? "15px" : "20px",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
       margin: "0 auto",
-      maxWidth: "90%",
+      width: "100%", // responsive full width inside container
+      maxWidth: isMobile ? "280px" : "400px", // shrink for mobile
       marginTop: "20px",
-      minHeight: window.innerWidth <= 768 ? "auto" : "250px",
+      minHeight: isMobile ? "auto" : "250px",
     },
     image: {
-      width: window.innerWidth <= 768 ? "100px" : "120px",
-      height: window.innerWidth <= 768 ? "100px" : "120px",
+      width: isMobile ? "90px" : "120px",
+      height: isMobile ? "90px" : "120px",
       borderRadius: "50%",
       objectFit: "cover",
       border: "3px solid #ddd",
       marginBottom: "15px",
     },
     title: {
-      fontSize: "1.2rem",
+      fontSize: isMobile ? "1rem" : "1.2rem",
       color: "#333",
+      textAlign: "center",
+      wordWrap: "break-word",
     },
   };
-
-  // Adjust paddingTop for mobile devices
-  if (typeof window !== "undefined" && window.innerWidth <= 768) {
-    styles.section.paddingTop = "20px"; // Reduced from 70px to 20px (mobile)
-  }
 
   return (
     <section style={styles.section}>

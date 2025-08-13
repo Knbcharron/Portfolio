@@ -26,28 +26,28 @@ export default function Skills() {
   };
 
   const settings = {
-  dots: true,
-  infinite: true,         
-  speed: 500,
-  slidesToShow: 1,        
-  slidesToScroll: 1,
-  arrows: true,
-  swipe: true,
-  autoplay: true,         
-  autoplaySpeed: 3000,    
-  pauseOnHover: true,     
-  pauseOnDotsHover: true, 
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: { slidesToShow: 1 }
-    },
-    {
-      breakpoint: 1024,
-      settings: { slidesToShow: 2 }
-    }
-  ],
-};
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    swipe: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    pauseOnDotsHover: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 1 },
+      },
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2 },
+      },
+    ],
+  };
 
   useEffect(() => {
     if (sliderRef.current) {
@@ -56,20 +56,25 @@ export default function Skills() {
   }, [activeTab]);
 
   const styles = {
-   section: {
-  backgroundColor: "#123642",
-  minHeight: "100vh",
-  paddingTop: "0", 
-  paddingBottom: "40px", 
-  width: "100%",
-  color: "white",
-  fontFamily: "Arial, sans-serif",
-},
+    section: {
+      backgroundColor: "#123642",
+      minHeight: "100vh",
+      paddingTop: "120px", // Adjusted for 60px header + 60px padding on desktop
+      paddingBottom: "40px",
+      width: "100%",
+      maxWidth: "100vw", // Prevents extension beyond screen width
+      color: "white",
+      fontFamily: "Arial, sans-serif",
+      boxSizing: "border-box",
+      overflowX: "hidden", // Prevents horizontal overflow
+    },
     container: {
       maxWidth: "900px",
       margin: "0 auto",
       textAlign: "center",
       padding: "0 10px",
+      flex: 1,
+      boxSizing: "border-box",
     },
     heading: { fontSize: "2.5rem", marginBottom: "10px" },
     subHeading: { fontSize: "1.2rem", color: "#ccc", marginBottom: "30px" },
@@ -117,6 +122,11 @@ export default function Skills() {
     title: { fontSize: "1.5rem", fontWeight: "600" },
   };
 
+  // Adjust paddingTop for mobile devices
+  if (typeof window !== "undefined" && window.innerWidth <= 768) {
+    styles.section.paddingTop = "70px"; // Adjusted for 50px mobile header + 20px padding
+  }
+
   return (
     <section style={styles.section}>
       <div style={styles.container}>
@@ -141,12 +151,12 @@ export default function Skills() {
             <div key={card.id}>
               <div style={styles.card}>
                 <img
-                 src={
-                 card.image.startsWith("http")
-                  ? card.image
-                  : `${process.env.PUBLIC_URL}/${card.image}`
-                    }
-                 alt={card.title}
+                  src={
+                    card.image.startsWith("http")
+                      ? card.image
+                      : `${process.env.PUBLIC_URL}/${card.image}`
+                  }
+                  alt={card.title}
                   style={styles.image}
                 />
                 <h3 style={styles.title}>{card.title}</h3>

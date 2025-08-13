@@ -10,24 +10,33 @@ function Contact() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Responsive container changes flexDirection and padding
+  // Responsive container with padding for header and overflow control
   const container = {
     textAlign: "center",
     padding: isMobile ? "20px" : "100px",
     minHeight: "100vh",
     backgroundColor: "#123642",
     width: "100%",
+    maxWidth: "100vw", // Prevents extension beyond screen width
+    boxSizing: "border-box",
+    paddingTop: isMobile ? "70px" : "120px", // Adjusted for header (50px mobile, 60px desktop) + padding
+    margin: "0",
+    overflowX: "hidden", // Prevents horizontal overflow
   };
 
-  // Main section switches from row to column on mobile
-  const mainSection = {
-    display: "flex",
-    justifyContent: "space-around",
-    flexWrap: "wrap",
-    textAlign: "left",
-    flexDirection: isMobile ? "column" : "row",
-    gap: isMobile ? "30px" : "0",
-  };
+  // Main section with centered content and max width
+const mainSection = {
+  display: "flex",
+  justifyContent: "center", // ✅ Center items
+  flexWrap: "wrap",
+  textAlign: "left",
+  flexDirection: isMobile ? "column" : "row",
+  gap: "40px", // ✅ Space between left & right even on desktop
+  maxWidth: "1200px",
+  margin: "0 auto",
+  width: "100%",
+  boxSizing: "border-box",
+};
 
   const leftSection = {
     flex: "1",
@@ -35,6 +44,7 @@ function Contact() {
     maxWidth: "500px",
     padding: "20px",
     color: "white",
+    boxSizing: "border-box",
   };
 
   const rightSection = {
@@ -44,27 +54,36 @@ function Contact() {
     padding: "20px",
     borderRadius: "8px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+    backgroundColor: "#fff", // Consistent background for both mobile and desktop
+    color: "#000", // Consistent text color
+    boxSizing: "border-box",
+    height:"400px",
   };
 
   const title = {
     fontSize: "2rem",
     fontWeight: "bold",
     color: "white",
+    marginBottom: "10px",
   };
 
   const subTitle = {
     color: "#ccc",
     marginBottom: "40px",
+    fontSize: isMobile ? "1rem" : "1.2rem",
   };
 
   const leftHeading = {
     fontWeight: "bold",
-    fontSize: "1.3rem",
+    fontSize: isMobile ? "1.1rem" : "1.3rem",
+    marginBottom: "10px",
   };
 
   const para = {
     color: "white",
     marginBottom: "20px",
+    fontSize: isMobile ? "0.95rem" : "1rem",
+    lineHeight: "1.5",
   };
 
   const infoItem = {
@@ -74,15 +93,21 @@ function Contact() {
     gap: "10px",
   };
 
+  // Style for symbols to ensure white color
+  const symbolStyle = {
+    color: "white", // Ensures symbols are white
+  };
+
   const socialIcons = {
     display: "flex",
     gap: "15px",
     marginTop: "20px",
-    fontSize: "1.8rem",
+    fontSize: isMobile ? "1.5rem" : "1.8rem",
+    flexWrap: "wrap",
   };
 
   const iconStyle = {
-    color: "white",
+    color: "white", // Consistent white color for all icons
     textDecoration: "none",
     transition: "color 0.3s",
   };
@@ -95,7 +120,7 @@ function Contact() {
 
   const formRow = {
     display: "flex",
-    gap: "10px",
+    gap: "9px",
     flexDirection: isMobile ? "column" : "row",
   };
 
@@ -103,7 +128,8 @@ function Contact() {
     flex: 1,
     padding: "10px",
     border: "1px solid #ccc",
-    borderRadius: "4px",
+    borderRadius: "6px",
+    fontSize: "1rem",
   };
 
   const inputFull = {
@@ -111,6 +137,7 @@ function Contact() {
     border: "1px solid #ccc",
     borderRadius: "4px",
     width: "100%",
+    fontSize: "1rem",
   };
 
   const textarea = {
@@ -118,15 +145,18 @@ function Contact() {
     border: "1px solid #ccc",
     borderRadius: "4px",
     width: "100%",
+    fontSize: "1rem",
   };
 
   const button = {
     backgroundColor: "#0d2c54",
     color: "#fff",
-    padding: "10px",
+    padding: "10px 20px",
     border: "none",
     borderRadius: "6px",
     cursor: "pointer",
+    fontSize: "1rem",
+    transition: "background-color 0.3s",
   };
 
   return (
@@ -147,7 +177,7 @@ function Contact() {
           </p>
 
           <div style={infoItem}>
-            <span>👤</span>
+            <span style={symbolStyle}>👤</span>
             <div>
               <strong>Name</strong>
               <p>K N B CHARRON</p>
@@ -155,7 +185,7 @@ function Contact() {
           </div>
 
           <div style={infoItem}>
-            <span>📍</span>
+            <span style={symbolStyle}>📍</span>
             <div>
               <strong>Address</strong>
               <p>Sankranthi Palli (v), Chittoor, 517416</p>
@@ -163,7 +193,7 @@ function Contact() {
           </div>
 
           <div style={infoItem}>
-            <span>✉️</span>
+            <span style={symbolStyle}>✉️</span>
             <div>
               <strong>Email</strong>
               <p>knbcharron@gmail.com</p>
@@ -171,7 +201,7 @@ function Contact() {
           </div>
 
           <div style={infoItem}>
-            <span>🌐</span>
+            <span style={symbolStyle}>🌐</span>
             <div>
               <strong>Language Known</strong>
               <p>English, Telugu</p>

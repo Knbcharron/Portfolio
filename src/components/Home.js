@@ -16,56 +16,26 @@ function Home() {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    position: "relative",
     display: "flex",
-    alignItems: "center",
-    paddingLeft: isMobile ? "5%" : "10%",
-    color: "white",
     flexDirection: isMobile ? "column" : "row",
-    justifyContent: isMobile ? "center" : "flex-start",
+    justifyContent: isMobile ? "flex-start" : "flex-start",
+    alignItems: isMobile ? "flex-start" : "center",
+    padding: isMobile ? "80px 20px 20px" : "0 10%",
+    color: "white",
+    boxSizing: "border-box",
   };
-
-const textStyle = {
-  position: "absolute",
-  top: isMobile ? "15%" : "50%", 
-  left: "50%",
-  transform: isMobile ? "translate(-50%, 0)" : "translate(-50%, -50%)",
-  fontSize: isMobile ? 14 : 30,
-  fontWeight: "bold",
-  color: "white",
-  opacity: 0,
-  animation: "fadeIn 2s forwards, rotate 5s linear infinite",
-  animationDelay: "1s, 3s",
-  whiteSpace: "nowrap",
-  zIndex: 1,
-};
 
   const wrapper = {
     display: "flex",
     flexDirection: "column",
     alignItems: isMobile ? "center" : "flex-start",
-    maxWidth: "500px",
-    zIndex: 2,
     textAlign: isMobile ? "center" : "left",
+    maxWidth: isMobile ? "100%" : "500px",
+    zIndex: 2,
   };
 
   const yellowText = {
     color: "#f5d142",
-  };
-
-  const hireButton = {
-    backgroundColor: "white",
-    color: "black",
-    padding: "10px 20px",
-    borderRadius: "25px",
-    border: "none",
-    cursor: "pointer",
-    fontWeight: "bold",
-    fontSize: "1rem",
-    marginTop: "15px",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
   };
 
   const headingCommon = {
@@ -74,26 +44,54 @@ const textStyle = {
     lineHeight: 1.2,
   };
 
+  const hireButton = {
+    backgroundColor: "white",
+    color: "black",
+    padding: isMobile ? "8px 16px" : "10px 20px",
+    borderRadius: "25px",
+    border: "none",
+    cursor: "pointer",
+    fontWeight: "bold",
+    fontSize: isMobile ? "0.9rem" : "1rem",
+    marginTop: "15px",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  };
+
+  const textStyle = {
+    position: "absolute",
+    top: isMobile ? "65%" : "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    fontSize: isMobile ? "14px" : "30px",
+    fontWeight: "bold",
+    color: "white",
+    opacity: 0,
+    animation: "fadeIn 2s forwards, rotate 5s linear infinite",
+    animationDelay: "1s, 3s",
+    whiteSpace: "nowrap",
+    zIndex: 1,
+  };
+
   return (
     <div style={sectionStyle}>
-      {/* Left side content */}
+      {/* Left Content */}
       <div style={wrapper}>
         <h3 style={headingCommon}>Hello,</h3>
-        <h1 style={{ ...headingCommon, fontSize: isMobile ? "2rem" : "2.5rem" }}>
+        <h1 style={{ ...headingCommon, fontSize: isMobile ? "1.8rem" : "2.5rem" }}>
           I'm <span style={yellowText}>Charron</span>
         </h1>
-
-        <p style={{ marginTop: "10px", marginBottom: 0 }}>
-          I am a skilled web designer with experience in creating visually
-          appealing and user-friendly websites.
+        <p style={{ marginTop: "10px", marginBottom: 0, fontSize: isMobile ? "0.9rem" : "1rem" }}>
+          I am a skilled web designer with experience in creating visually appealing and
+          user-friendly websites.
         </p>
-
         <button style={hireButton}>
-         <img
+          <img
             src={`${process.env.PUBLIC_URL}/bag.png`}
             alt="bag"
-            style={{ width: "18px", height: "18px" }}
-             />
+            style={{ width: isMobile ? "16px" : "18px", height: isMobile ? "16px" : "18px" }}
+          />
           Hire Me
         </button>
       </div>
@@ -104,21 +102,15 @@ const textStyle = {
   );
 }
 
-// Inject animations once
+// CSS Animations
 const styles = document.createElement("style");
 styles.innerHTML = `
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 @keyframes rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 `;
 document.head.appendChild(styles);

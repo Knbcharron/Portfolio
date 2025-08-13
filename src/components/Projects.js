@@ -27,30 +27,33 @@ export default function Projects() {
     { id: 4, title: "TODO LIST", image: "todo.jpg" },
   ];
 
- const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow,
-  slidesToScroll: 1,
-  centerMode: slidesToShow === 1, 
-  centerPadding: "0px",
-  autoplay: true,         
-  autoplaySpeed: 3000,    
-  pauseOnHover: true,     
-  pauseOnDotsHover: true, 
-};
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow,
+    slidesToScroll: 1,
+    centerMode: slidesToShow === 1,
+    centerPadding: "0px",
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    pauseOnDotsHover: true,
+  };
 
   const styles = {
     section: {
       backgroundColor: "#0d2a36",
       minHeight: "100vh",
-      paddingTop: "120px", 
+      paddingTop: "120px", // Adjusted for 60px header + 60px padding on desktop
       paddingBottom: "40px",
       width: "100%",
+      maxWidth: "100vw", // Prevents extension beyond screen width
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      boxSizing: "border-box",
+      overflowX: "hidden", // Prevents horizontal overflow
     },
     container: {
       maxWidth: "900px",
@@ -58,6 +61,7 @@ export default function Projects() {
       textAlign: "center",
       padding: "0 10px",
       flex: 1,
+      boxSizing: "border-box",
     },
     heading: {
       fontSize: "2.5rem",
@@ -80,7 +84,7 @@ export default function Projects() {
       alignItems: "center",
       justifyContent: "center",
       boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-      margin: "0 auto", 
+      margin: "0 auto",
       maxWidth: "90%",
       marginTop: "40px",
     },
@@ -97,6 +101,11 @@ export default function Projects() {
       color: "#333",
     },
   };
+
+  // Adjust paddingTop for mobile devices
+  if (typeof window !== "undefined" && window.innerWidth <= 768) {
+    styles.section.paddingTop = "70px"; // Adjusted for 50px mobile header + 20px padding
+  }
 
   return (
     <section style={styles.section}>
